@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from 'react-router-dom';
+import SearchHeader from './components/SearchHeader';
+import { YoutubeApiProvider } from './context/youtubeApiContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SearchHeader />
+      {/* 커스텀 api를 위한 컨텍스트 */}
+      <YoutubeApiProvider>
+        {/* useQuery의 데이터를 주고 받기위한 컨텍스트 */}
+        <QueryClientProvider client={queryClient}>
+          <Outlet />
+        </QueryClientProvider>
+      </YoutubeApiProvider>
+    </>
   );
 }
 
