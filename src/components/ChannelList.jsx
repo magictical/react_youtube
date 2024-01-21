@@ -5,11 +5,7 @@ import VideoCard from './VideoCard';
 
 export default function ChannelList({ id }) {
   const { youtube } = useYoutubeApi();
-  const {
-    isLoading,
-    error,
-    data: chList,
-  } = useQuery({
+  const { data: chList } = useQuery({
     queryKey: ['chList', id],
     queryFn: async () => await youtube.channelList(id),
   });

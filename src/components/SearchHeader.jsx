@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FaYoutube, FaSearch } from 'react-icons/fa';
-
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export default function SearchHeader() {
